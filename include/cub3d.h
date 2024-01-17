@@ -13,8 +13,11 @@ extern int	g_signal;
 # include <errno.h>
 # include <fcntl.h>
 # include <libgen.h>
+# include <limits.h>
+# include <math.h>
 # include <memory.h>
 # include <signal.h>
+# include <stdarg.h>
 # include <stdbool.h>
 # include <stdio.h>
 # include <stdlib.h>
