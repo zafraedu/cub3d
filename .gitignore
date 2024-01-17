@@ -5,6 +5,7 @@
 *.o
 *.ko
 *.obj
+./obj
 *.elf
 
 # Linker output
@@ -35,6 +36,7 @@
 *.i*86
 *.x86_64
 *.hex
+cub3d
 
 # Debug files
 *.dSYM/
@@ -50,3 +52,6 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+# more ...
+.DS_Store
