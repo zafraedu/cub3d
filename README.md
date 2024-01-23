@@ -32,11 +32,9 @@ En 42 School, se espera que casi todos los proyectos se escriban de acuerdo con 
 - - No assigns and declarations in the same line (unless static)
 - - You can't declare more than 5 variables per function
 - - ...
-- ```
-[42 NORMA](https://github.com/zafraedu/42/blob/master/public/es_norm.pdf) información sobre las normas de código de 42. `PDF`
+```
+>[42 NORMA](https://github.com/zafraedu/42/blob/master/public/es_norm.pdf) información sobre las normas de código de 42. `PDF`
 
 
 ## License
 Este trabajo se publica bajo los términos de [42 Unlicense](https://github.com/zafraedu/cub3d/blob/main/LICENSE).
-- ```
-```
