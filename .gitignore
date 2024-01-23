@@ -55,3 +55,6 @@ dkms.conf
 
 # more ...
 .DS_Store
+.vscode
+src/mini_cub3d
+src/mini_cub3d/*
