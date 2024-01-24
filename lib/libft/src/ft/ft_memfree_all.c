@@ -6,7 +6,7 @@
 /*   By: ezafra-r <ezafra-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 17:02:51 by zafraedu          #+#    #+#             */
-/*   Updated: 2024/01/23 11:41:21 by ezafra-r         ###   ########.fr       */
+/*   Updated: 2024/01/24 22:03:40 by ezafra-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
  *
  * @param ptr Puntero al array de cadenas de caracteres.
  */
-void	ft_free2d(char **ptr)
+void	free2d(char **ptr)
 {
 	int	i;
 

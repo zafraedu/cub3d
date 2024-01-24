@@ -1,8 +1,8 @@
 
-NO textures/Mona_Lisa.png
-SO textures/Wheat_Field.png
-WE textures/the_starry_night.png
-EA textures/girl_with_a_pearl_earring.png
+NO assets/textures/img_no.png
+SO assets/textures/img_so.png
+WE assets/textures/img_we.png
+EA assets/textures/img_ea.png
 
 C 0,0,60
 F 60,179,110

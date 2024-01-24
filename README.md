@@ -1,4 +1,4 @@
-![header cub3d](./assets/img/header_cub3d.png)
+![header cub3d](./public/header_cub3d.png)
 
 <div align="center">
 	<img src="https://img.shields.io/badge/status-.........-success?color=%2300599C&style=flat" />

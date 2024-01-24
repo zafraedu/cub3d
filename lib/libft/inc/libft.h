@@ -6,7 +6,7 @@
 /*   By: ezafra-r <ezafra-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/15 18:19:40 by ezafra-r          #+#    #+#             */
-/*   Updated: 2024/01/23 11:43:28 by ezafra-r         ###   ########.fr       */
+/*   Updated: 2024/01/24 22:03:54 by ezafra-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int					ft_lstsize(t_list *lst);
 void				*ft_memchr(const void *str, int c, size_t size);
 int					ft_memcmp(const void *s1, const void *s2, size_t size);
 void				*ft_memcpy(void *dest, const void *src, size_t size);
-void				ft_free2d(char **ptr);
+void				free2d(char **ptr);
 void				ft_memfree(void *ptr);
 void				*ft_memmove(void *dest, const void *src, size_t size);
 void				*ft_memset(void *str, int c, size_t size);

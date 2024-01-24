@@ -17,21 +17,14 @@ else
 endif
 
 SRCS = $(SRC_DIR)/main.c\
-	$(SRC_DIR)/mini_cub3d/exit.c\
-	$(SRC_DIR)/mini_cub3d/mouvement.c\
-	$(SRC_DIR)/mini_cub3d/wall_rendering.c\
-	$(SRC_DIR)/mini_cub3d/raycasting.c\
-	$(SRC_DIR)/mini_cub3d/game_start.c\
-	$(SRC_DIR)/mini_cub3d/init_argument.c\
 	$(SRC_DIR)/parsing/parsing.c\
-	$(SRC_DIR)/parsing/parsing_utils.c\
-	$(SRC_DIR)/parsing/p_maps.c\
-	$(SRC_DIR)/parsing/p_maps_utils.c\
 	$(SRC_DIR)/parsing/p_textures.c\
 	$(SRC_DIR)/parsing/p_textures_utils.c\
+	$(SRC_DIR)/parsing/p_read_map.c\
 	$(SRC_DIR)/parsing/p_read_map_utils.c\
 	$(SRC_DIR)/parsing/p_frees.c\
-
+	$(SRC_DIR)/parsing/p_valid_map.c\
+	$(SRC_DIR)/parsing/p_lst_ture.c\
 
 OBJS = $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 #########################  directorios(rutas)  #################################
@@ -70,7 +63,7 @@ clean:
 	@$(RM) $(OBJ_DIR)
 	@make clean -sC $(LIBFT_DIR)
 	@make clean -sC $(LIBMLX_DIR)
-	@echo "$(GREEN)[Cleaned$(CIAN) '$(NAME)objects' $(GREEN)successfully]$(END)"
+	@echo "$(GREEN)[Cleaned$(CIAN) '$(NAME) objs' $(GREEN)successfully]$(END)"
 
 fclean: clean
 	@make fclean -sC $(LIBFT_DIR)

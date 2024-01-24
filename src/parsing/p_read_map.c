@@ -1,5 +1,33 @@
 #include "cub3d.h"
 
+int	is_surrounded(char *line)
+{
+	while (*line == 32 || (*line >= 9 && *line <= 13))
+		line++;
+	if (*line != '1' || line[ft_strlen(line) - 1] != '1')
+		return (0);
+	return (1);
+}
+
+int	is_validmap(char *line, int *flag)
+{
+	int	i;
+
+	i = 0;
+	while (line[i])
+	{
+		if ((line[i] != '1' && line[i] != 32 && line[i] != '0'
+				&& line[i] != '\n') && !(line[i] == 'W' || line[i] == 'E'
+				|| line[i] == 'N' || line[i] == 'S'))
+			return (0);
+		else if (line[i] == 'W' || line[i] == 'E' || line[i] == 'N'
+				|| line[i] == 'S')
+			(*flag)++;
+		i++;
+	}
+	return (1);
+}
+
 char	*getmap(t_data *map)
 {
 	map->map = ft_strdup("");
@@ -27,7 +55,7 @@ int	read_map_(t_data *map, int count)
 	if (!check_tures_space_tab(map->ture2d, count) || !parse_rgb(map->ture2d)
 		|| !check_dup(map) || !check_first_last_line(map->map2d)
 		|| !surounded_by_one(map->map2d))
-		return (ft_free2d(map->map2d), 0);
+		return (free2d(map->map2d), 0);
 	return (1);
 }
 
@@ -56,6 +84,6 @@ int	read_map(char *av, t_data *map, int *count)
 	if (!map->ture2d)
 		return (freetl(map->ture, NULL, map->fd), 0);
 	if (!read_map_(map, *count))
-		return (freetl(map->ture, NULL, map->fd), ft_free2d(map->ture2d), 0);
+		return (freetl(map->ture, NULL, map->fd), free2d(map->ture2d), 0);
 	return (freetl(map->ture, map->line, map->fd), 1);
 }

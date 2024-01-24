@@ -10,6 +10,7 @@ int	main(int ac, char **av)
 {
 	t_data	dt;
 
+	dt.t = NULL;
 	if (!parsing(ac, av, &dt))
 		return (1);
 	// start_the_game(data);  // start the game

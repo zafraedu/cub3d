@@ -22,6 +22,12 @@ int	parsing(int ac, char **av, t_data *data)
 	count = 0;
 	if (!read_map(av[1], data, &count))
 		return (0);
+	if (!valid_map(data))
+		return (0);
+	data->t = NULL;
+	if (!lst_ture(data, &data->t))
+		return (free_map(data), freelist(&data->t), 0);
+	if (!color_ture(data, data->t))
+		return (free_map(data), freelist(&data->t), 0);
 	return (1);
-	// l_ture = NULL;
 }
