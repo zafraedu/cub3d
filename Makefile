@@ -2,23 +2,29 @@ NAME = cub3d
 
 CC = gcc
 UNAME = $(shell uname)
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -O3 -Ofast -Wunreachable-code
 LFLAGS = $(LIBMLX_DIR)/libmlx42.a
 INC = -I $(INC_DIR) -I $(LIBFT_DIR)/inc -I $(LIBMLX_DIR)/include/MLX42
 LIBS = $(LIBFT_DIR)/libft.a $(LIBMLX_DIR)/libmlx42.a
 RM = rm -rf
 
-ifeq ($(UNAME), Darwin)
-# mac
-	LFLAGS += -lglfw -L "/Users/$(USER)/.brew/opt/glfw/lib/"
-else ifeq ($(UNAME), Linux)
-# Linux
+ifeq ($(UNAME), Darwin) # mac
+	LFLAGS += -lm -lglfw -L "/Users/$(USER)/.brew/opt/glfw/lib/"
+else ifeq ($(UNAME), Linux) # Linux
 	LFLAGS += -ldl -lglfw -pthread -lm
 else
 	@echo "$(R)[The program is only available for Linux and MacOS]\n$(END)"
 endif
 
 SRCS = $(SRC_DIR)/main.c\
+	$(SRC_DIR)/parsing/parsing.c\
+	$(SRC_DIR)/parsing/p_textures.c\
+	$(SRC_DIR)/parsing/p_textures_utils.c\
+	$(SRC_DIR)/parsing/p_read_map.c\
+	$(SRC_DIR)/parsing/p_read_map_utils.c\
+	$(SRC_DIR)/parsing/p_frees.c\
+	$(SRC_DIR)/parsing/p_valid_map.c\
+	$(SRC_DIR)/parsing/p_lst_ture.c\
 
 OBJS = $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 #########################  directorios(rutas)  #################################
@@ -57,7 +63,7 @@ clean:
 	@$(RM) $(OBJ_DIR)
 	@make clean -sC $(LIBFT_DIR)
 	@make clean -sC $(LIBMLX_DIR)
-	@echo "$(GREEN)[Cleaned $(CIAN) '$(NAME) objects' $(GREEN)successfully]$(END)"
+	@echo "$(GREEN)[Cleaned$(CIAN) '$(NAME) objs' $(GREEN)successfully]$(END)"
 
 fclean: clean
 	@make fclean -sC $(LIBFT_DIR)
@@ -70,6 +76,8 @@ re: fclean all
 #########################  Normas  #############################################
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(INC_DIR)/cub3d.h
 	@mkdir -p $(OBJ_DIR)
+	@mkdir -p $(OBJ_DIR)/mini_cub3d
+	@mkdir -p $(OBJ_DIR)/parsing
 	@$(CC) $(CFLAGS) -c $< -o $@ $(INC)
 		@echo "$(BLUE)CUB3D Compiling:$(END) $(notdir $<)"
 

@@ -6,7 +6,7 @@
 /*   By: ezafra-r <ezafra-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 00:18:52 by zafraedu          #+#    #+#             */
-/*   Updated: 2023/12/11 16:19:25 by ezafra-r         ###   ########.fr       */
+/*   Updated: 2024/01/24 22:06:02 by ezafra-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ char	**ft_arrayadd(char *str, char **array)
 		while (array[++i])
 			new_array[i] = ft_strdup(array[i]);
 		new_array[i] = ft_strdup(str);
-		ft_memfree_all(array);
+		free2d(array);
 		free(str);
 		return (new_array);
 	}
