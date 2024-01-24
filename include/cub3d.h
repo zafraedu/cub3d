@@ -92,6 +92,8 @@ typedef struct s_data
 	char				**sq_map;
 	char				**cc;
 	char				**ff;
+	int					cols;
+	int					rows;
 	t_turelist			*t;
 }						t_data;
 
@@ -163,6 +165,8 @@ int						valid_map(t_data *m);
 
 // parsing.c
 
+void					get_rows_cols(t_data *m);
+void					get_x_y_player(t_data *m);
 int						parsing(int ac, char **av, t_data *data);
 int						checkextension(char *fname);
 
