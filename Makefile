@@ -76,8 +76,8 @@ re: fclean all
 #########################  Normas  #############################################
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(INC_DIR)/cub3d.h
 	@mkdir -p $(OBJ_DIR)
-	@mkdir -p $(OBJ_DIR)/mini_cub3d
 	@mkdir -p $(OBJ_DIR)/parsing
+	@mkdir -p $(OBJ_DIR)/execution
 	@$(CC) $(CFLAGS) -c $< -o $@ $(INC)
 		@echo "$(BLUE)CUB3D Compiling:$(END) $(notdir $<)"
 

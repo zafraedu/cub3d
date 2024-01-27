@@ -22,6 +22,8 @@
 *.a
 *.la
 *.lo
+lib/libmlx/src/mlx_frag_shader.c
+lib/libmlx/src/mlx_vert_shader.c
 
 # Shared objects (inc. Windows DLLs)
 *.dll
@@ -57,3 +59,4 @@ dkms.conf
 .DS_Store
 .vscode
 test
+src/execution

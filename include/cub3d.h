@@ -48,7 +48,7 @@
 # define ERR_MAP_INV "Error: invalid map element\n"
 # define ERR_MAP_EMPTY "Error: empty ligne in the map\n"
 # define ERR_MAP_DUP "Error: duplicate map element\n"
-# define ERR_MAP_RGB "Error: \n"
+# define ERR_MAP_RGB "Error: color map [RGB] invalid\n"
 
 /*══════════════════════════ [  STRUCTS  ] ═══════════════════════════════════*/
 
@@ -169,7 +169,5 @@ void					get_rows_cols(t_data *m);
 void					get_x_y_player(t_data *m);
 int						parsing(int ac, char **av, t_data *data);
 int						checkextension(char *fname);
-
-// main.c //test - ns donde poner
 
 #endif

@@ -14,15 +14,6 @@ int	main(int ac, char **av)
 	if (!parsing(ac, av, &dt))
 		return (1);
 	// start_the_game(data);  // start the game
+	execution(&dt);
 	return (0);
 }
-
-// main of mini_cub
-// int	main(void)
-// {
-// 	t_data *data;
-
-// 	data = init_argumet(); // init the data structure
-// 	start_the_game(data);  // start the game
-// 	return (0);
-// }
