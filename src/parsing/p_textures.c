@@ -1,6 +1,6 @@
 #include "cub3d.h"
 
-int	checkcolorvalues(char **rgb)
+int	check_color_values(char **rgb)
 {
 	int	i;
 
@@ -13,9 +13,9 @@ int	checkcolorvalues(char **rgb)
 
 void	ft_process_rgb_color(t_turelist *tmp, t_data *m)
 {
-	if (!ft_strncmp(tmp->key, "F", 2))
+	if (!ft_strncmp(tmp->name, "F", 2))
 		m->ff = ft_split(tmp->value, ',');
-	else if (!ft_strncmp(tmp->key, "C", 2))
+	else if (!ft_strncmp(tmp->name, "C", 2))
 		m->cc = ft_split(tmp->value, ',');
 	return ;
 }
@@ -29,9 +29,9 @@ int	color_ture(t_data *m, t_turelist *l_ture)
 	tmp = l_ture;
 	while (tmp)
 	{
-		if (!ft_strncmp(tmp->key, "F", 1) || !ft_strncmp(tmp->key, "C", 1))
+		if (!ft_strncmp(tmp->name, "F", 1) || !ft_strncmp(tmp->name, "C", 1))
 		{
-			if (!checkcolorvalues(ft_split(tmp->value, ',')))
+			if (!check_color_values(ft_split(tmp->value, ',')))
 				return (ft_putstr_fd(ERR_MAP_RGB, 2), 0);
 			ft_process_rgb_color(tmp, m);
 		}
@@ -42,7 +42,7 @@ int	color_ture(t_data *m, t_turelist *l_ture)
 
 int	check_color_textures(char *line)
 {
-	while ((*line == ' ' || (*line >= 9 && *line <= 13)))
+	while (ft_isspace(*line))
 		line++;
 	return ((!ft_strncmp(line, "EA", 2) || !ft_strncmp(line, "NO", 2) ||
 				!ft_strncmp(line, "SO", 2) || !ft_strncmp(line, "WE", 2)) ||
@@ -51,12 +51,8 @@ int	check_color_textures(char *line)
 
 int	check_count_textures(t_data *m, int count)
 {
+	(void)m;
 	if (count != 6)
-	{
-		ft_putstr_fd(ERR_MAP_INV, 2);
-		ft_memfree(m->ture);
-		ft_memfree(m->line);
-		return (0);
-	}
+		return (ft_putstr_fd(ERR_MAP_INV, 2), 0); //cantidad de texturas
 	return (1);
 }

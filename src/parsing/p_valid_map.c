@@ -93,7 +93,7 @@ int	valid_map(t_data *m)
 			m->sq_map[i] = ft_strdup(m->map2d[i]);
 		else
 			m->sq_map[i] = fixline(m->map2d[i], maxlen);
-	m->sq_map[i] = NULL; // Añade NULL al final del nuevo mapa cuadrado
+	m->sq_map[i] = NULL; // Añade NULL al final del nuevo mapa cuadrado (ns si es necesario)
 	m->h_map = ft_arraylen(m->sq_map); // Obtiene la anchura del nuevo mapa cuadrado
 	m->w_map = ft_strlen(m->sq_map[0]); // Obtiene la altura del nuevo mapa cuadrado
 	// Verifica la validez del mapa cuadrado llamando a las funciones h_map y v_map

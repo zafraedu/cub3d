@@ -2,19 +2,17 @@
 
 int	is_surrounded(char *line)
 {
-	while (*line == 32 || (*line >= 9 && *line <= 13))
+	while (ft_isspace(*line))
 		line++;
-	if (*line != '1' || line[ft_strlen(line) - 1] != '1')
-		return (0);
-	return (1);
+	return (*line == '1' && line[ft_strlen(line) - 1] == '1');
 }
 
 int	is_validmap(char *line, int *flag)
 {
 	int	i;
 
-	i = 0;
-	while (line[i])
+	i = -1;
+	while (line[++i])
 	{
 		if ((line[i] != '1' && line[i] != 32 && line[i] != '0'
 				&& line[i] != '\n') && !(line[i] == 'W' || line[i] == 'E'
@@ -23,7 +21,6 @@ int	is_validmap(char *line, int *flag)
 		else if (line[i] == 'W' || line[i] == 'E' || line[i] == 'N'
 				|| line[i] == 'S')
 			(*flag)++;
-		i++;
 	}
 	return (1);
 }
@@ -68,22 +65,23 @@ int	read_map(char *av, t_data *map, int *count)
 	if (map->line == NULL)
 		return (ft_putstr_fd(ERR_EMPTY_FILE, 2), 0);
 	map->ture = ft_strdup("");
-	while (map->line && map->line[0] != '1' && map->line[0] != 32) // Lee líneas del archivo hasta encontrar la primera línea que comienza con '1' o un espacio en blanco.
+	while (map->line && map->line[0] != '1' && map->line[0] != 32)
 	{
 		if (check_color_textures(map->line))
 		{
 			map->ture = ft_strjoin(map->ture, map->line);
 			(*count)++;
+			// printf("%s\n", map->ture); //test
 		}
 		ft_memfree(map->line);
 		map->line = get_next_line(map->fd);
 	}
 	if (!check_count_textures(map, *count))
-		return (freetl(NULL, NULL, map->fd), 0);
+		return (freetl(map->ture, map->line, map->fd), 0);
 	map->ture2d = ft_split(map->ture, '\n');
 	if (!map->ture2d)
-		return (freetl(map->ture, NULL, map->fd), 0);
+		return (freetl(map->ture, map->line, map->fd), 0);
 	if (!read_map_(map, *count))
-		return (freetl(map->ture, NULL, map->fd), free2d(map->ture2d), 0);
+		return (freetl(map->ture, map->line, map->fd), free2d(map->ture2d), 0);
 	return (freetl(map->ture, map->line, map->fd), 1);
 }

@@ -9,7 +9,7 @@ int	check_tures_space_tab(char **ture2d, int count)
 		return (0);
 	while (++i < count)
 		if (!is_valid_texture(ture2d[i]))
-			return (ft_putstr_fd(ERR_MAP_INV, 2), 0);
+			return (ft_putstr_fd("texture mal\n", 2), 0);
 	return (1);
 }
 
@@ -22,11 +22,11 @@ int	parse_rgb(char **ture2d)
 	while (ture2d[i])
 	{
 		ptr = ture2d[i];
-		while (*ptr == ' ' || (*ptr >= 9 && *ptr <= 13))
+		while (ft_isspace(*ptr))
 			ptr++;
 		if (ptr[0] == 'F' || ptr[0] == 'C')
 			if (count_comma(ptr) != 2 || !check_pos_cf(ptr))
-				return (ft_putstr_fd(ERR_MAP_INV, 2), 0);
+				return (ft_putstr_fd("color mal\n", 2), 0);
 		i++;
 	}
 	return (1);
@@ -56,8 +56,8 @@ int	check_first_last_line(char **map)
 {
 	if (!map[0])
 		return (ft_putstr_fd(ERR_MAP_INV, 2), 0);
-	if (!line_arond_one(map[0]) || !line_arond_one(getlastline(map)))
-		return (ft_putstr_fd(ERR_MAP_INV, 2), 0);
+	if (!line_arond_one(map[0]) || !line_arond_one(map[ft_arraylen(map) - 1]))
+		return (ft_putstr_fd("one Y\n", 2), 0);
 	return (1);
 }
 
@@ -67,14 +67,11 @@ int	surounded_by_one(char **map)
 	int	flag;
 
 	flag = 0;
-	i = 0;
-	while (map[i])
-	{
+	i = -1;
+	while (map[++i])
 		if (!is_surrounded(map[i]) || !is_validmap(map[i], &flag) || flag > 1)
-			return (ft_putstr_fd(ERR_MAP_INV, 2), 0);
-		i++;
-	}
+			return (ft_putstr_fd("one X\n", 2), 0);
 	if (flag == 0)
-		return (ft_putstr_fd(ERR_MAP_INV, 2), 0);
+		return (ft_putstr_fd("no position map\n", 2), 0);
 	return (1);
 }

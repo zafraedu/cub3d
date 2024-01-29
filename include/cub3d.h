@@ -54,7 +54,7 @@
 
 typedef struct s_turelist
 {
-	char				*key;
+	char				*name;
 	char				*value;
 	struct s_turelist	*next;
 }						t_turelist;
@@ -149,7 +149,7 @@ char					*getlastline(char **map);
 
 // p_texture.c
 
-int						checkcolorvalues(char **rgb);
+int						check_color_values(char **rgb);
 void					ft_process_rgb_color(t_turelist *tmp, t_data *m);
 int						color_ture(t_data *m, t_turelist *l_ture);
 int						check_color_textures(char *line);
@@ -168,6 +168,6 @@ int						valid_map(t_data *m);
 void					get_rows_cols(t_data *m);
 void					get_x_y_player(t_data *m);
 int						parsing(int ac, char **av, t_data *data);
-int						checkextension(char *fname);
+int						check_extension_map(char *fname);
 
 #endif

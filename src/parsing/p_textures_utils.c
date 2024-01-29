@@ -2,14 +2,14 @@
 
 int	is_valid_texture(char *line)
 {
-	while (*line == ' ' || (*line >= 9 && *line <= 13))
+	while (ft_isspace(*line))
 		line++;
 	if ((!ft_strncmp(line, "NO", 2) || !ft_strncmp(line, "SO", 2)
 			|| !ft_strncmp(line, "WE", 2) || !ft_strncmp(line, "EA", 2))
-		&& (line[2] == 32 || (line[2] >= 9 && line[2] <= 13)))
+		&& ft_isspace(line[2]))
 		return (1);
 	else if ((!ft_strncmp(line, "F", 1) || !ft_strncmp(line, "C", 1))
-			&& (line[1] == 32 || (line[1] >= 9 && line[1] <= 13)))
+			&& ft_isspace(line[1]))
 		return (1);
 	return (0);
 }
@@ -34,7 +34,7 @@ int	check_pos_cf(char *l)
 
 	flag = 0;
 	i = 0;
-	while (*l == ' ' || (*l >= 9 && *l <= 13) || *l == 'C' || *l == 'F')
+	while (ft_isspace(*l) || *l == 'C' || *l == 'F')
 	{
 		if (*l == 'C' || *l == 'F')
 			flag++;
@@ -70,7 +70,7 @@ char	*getlastline(char **map)
 	int	i;
 
 	i = 0;
-	while (map[i])
+	while (map[i + 1])
 		i++;
-	return (map[i - 1]);
+	return (map[i]);
 }

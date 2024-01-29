@@ -46,7 +46,7 @@ void	get_x_y_player(t_data *m)
  * @return (Retorna 1 si dot no es NULL y la extensión es ".cub");
  * de lo contrario, retorna 0.
 */
-int	checkextension(char *file_name)
+int	check_extension_map(char *file_name)
 {
 	char	*dot;
 
@@ -59,7 +59,7 @@ int	parsing(int ac, char **av, t_data *data)
 {
 	int	count;
 
-	if (ac != 2 || !checkextension(av[1]))
+	if (ac != 2 || !check_extension_map(av[1]))
 		return (ft_putstr_fd(ERR_INV_COP, 2), 0);
 	count = 0;
 	if (!read_map(av[1], data, &count))

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zafraedu <zafraedu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ezafra-r <ezafra-r@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/15 18:19:49 by ezafra-r          #+#    #+#             */
-/*   Updated: 2023/10/08 23:19:59 by zafraedu         ###   ########.fr       */
+/*   Updated: 2024/01/29 13:33:34 by ezafra-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	ft_atoi(const char *str)
 
 	atoi = 0;
 	sign = 1;
-	while ((*str >= 9 && *str <= 13) || *str == 32)
+	while (ft_isspace(*str))
 		str++;
 	if (*str == 45 || *str == 43)
 	{

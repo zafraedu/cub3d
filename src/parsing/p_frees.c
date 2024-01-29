@@ -43,7 +43,7 @@ void	freelist(t_turelist **head)
 	while (tmp)
 	{
 		*head = tmp->next;
-		ft_memfree(tmp->key);
+		ft_memfree(tmp->name);
 		ft_memfree(tmp->value);
 		ft_memfree(tmp);
 		tmp = *head;
