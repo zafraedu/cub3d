@@ -58,6 +58,8 @@ int	read_map_(t_data *map, int count)
 
 int	read_map(char *av, t_data *map, int *count)
 {
+	char	*temp_ture;
+
 	map->fd = open(av, O_RDONLY);
 	if (map->fd == -1)
 		return (ft_putstr_fd(ERR_INV_FILE, 2), 0);
@@ -69,9 +71,12 @@ int	read_map(char *av, t_data *map, int *count)
 	{
 		if (check_color_textures(map->line))
 		{
-			map->ture = ft_strjoin(map->ture, map->line);
+			temp_ture = ft_strjoin(map->ture, map->line);
+			ft_memfree(map->ture);
+			map->ture = strdup(temp_ture);
+			ft_memfree(temp_ture);
 			(*count)++;
-			// printf("%s\n", map->ture); //test
+			//printf("%s\n", map->ture); //test
 		}
 		ft_memfree(map->line);
 		map->line = get_next_line(map->fd);

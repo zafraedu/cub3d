@@ -64,7 +64,9 @@ int	parsing(int ac, char **av, t_data *data)
 	count = 0;
 	if (!read_map(av[1], data, &count))
 		return (0);
-	if (!valid_map(data))
+	exit(1);
+	data = NULL;
+/* if (!valid_map(data))
 		return (0);
 	data->t = NULL;
 	if (!lst_ture(data, &data->t))
@@ -72,6 +74,6 @@ int	parsing(int ac, char **av, t_data *data)
 	if (!color_ture(data, data->t))
 		return (free_map(data), freelist(&data->t), 0);
 	get_x_y_player(data);
-	get_rows_cols(data);
+	get_rows_cols(data); */
 	return (1);
 }

@@ -37,7 +37,7 @@
 # define FOV 60                      // field of view
 # define ROTATION_SPEED 0.045        // rotation speed
 # define PLAYER_SPEED 4              // player speed
-# define M_PI 3.14159265358979323846 //? ns pq el de <math.h> no funciona
+ //# define M_PI 3.14159265358979323846 //? ns pq el de <math.h> no funciona
 
 // ERROR
 

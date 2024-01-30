@@ -6,7 +6,7 @@ void	freetl(char *ture, char *line, int fd)
 		ft_memfree(ture);
 	if (line)
 		ft_memfree(line);
-	if (fd > 0)
+	if (fd >= 0)
 		close (fd);
 }
 
