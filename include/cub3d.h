@@ -52,6 +52,14 @@
 
 /*══════════════════════════ [  STRUCTS  ] ═══════════════════════════════════*/
 
+typedef struct s_tex
+{
+	mlx_texture_t		*no;
+	mlx_texture_t		*so;
+	mlx_texture_t		*we;
+	mlx_texture_t		*ea;
+}						t_tex;
+
 typedef struct s_turelist
 {
 	char				*name;
@@ -72,9 +80,14 @@ typedef struct s_player
 
 typedef struct s_ray
 {
-	double ray_ngl;  // ray angle
-	double distance; // distance to the wall
-	int flag;        // flag for the wall
+	int					index;
+	double				ray_ngl;
+	double				horiz_x;
+	double				horiz_y;
+	double				vert_x;
+	double				vert_y;
+	double				distance;
+	int					flag;
 }						t_ray;
 
 typedef struct s_data
@@ -92,8 +105,6 @@ typedef struct s_data
 	char				**sq_map;
 	char				**cc;
 	char				**ff;
-	int					cols;
-	int					rows;
 	t_turelist			*t;
 }						t_data;
 
@@ -104,6 +115,8 @@ typedef struct s_mlx
 	t_ray *ray;       // the ray structure
 	t_data *dt;       // the data structure
 	t_player *ply;    // the player structure
+	t_tex				*tex;
+	t_turelist			*l_ture;
 }						t_mlx;
 
 /*═════════════════════════ [  FUNCTIONS  ] ══════════════════════════════════*/
@@ -123,7 +136,7 @@ t_turelist				*new_texture(char *line);
 void					lst_back_ture(t_turelist **l_ture, t_turelist *new);
 int						lst_ture(t_data *m, t_turelist **l_ture);
 
-//p_read_map_utils.c
+// p_read_map_utils.c
 
 int						check_tures_space_tab(char **ture2d, int count);
 int						parse_rgb(char **ture2d);
@@ -165,9 +178,56 @@ int						valid_map(t_data *m);
 
 // parsing.c
 
-void					get_rows_cols(t_data *m);
 void					get_x_y_player(t_data *m);
 int						parsing(int ac, char **av, t_data *data);
 int						check_extension_map(char *fname);
+
+/*------------------------ [  execution  ] -----------------------------------*/
+// execfree.c
+
+void					ft_delete_tex(t_tex *tex);
+void					ft_exit(t_mlx *mlx);
+
+// mouvement.c
+
+void					rotate_player(t_mlx *mlx, int i);
+void					move_player(t_mlx *mlx, double move_x, double move_y);
+void					cub_hook(t_mlx *mlx, double move_x, double move_y);
+void					ft_reles(mlx_key_data_t keydata, t_mlx *mlx);
+void					key_press(mlx_key_data_t keydata, void *ml);
+
+// execution.c
+
+void					get_angle(t_mlx *mlx);
+void					drow_map_pixel(void *mlxl);
+int						checkload(t_turelist *list);
+int						load_texture(t_tex *tex, t_turelist *l_ture);
+int						execution(t_data *dt);
+
+// raycasting.c
+
+int						inter_check(float angle, float *inter, float *step,
+							int is_horizon);
+int						wall_hit(float x, float y, t_mlx *mlx);
+float					get_h_inter(t_mlx *mlx, float angl);
+float					get_v_inter(t_mlx *mlx, float angl);
+void					cast_rays(t_mlx *mlx);
+
+// render2.c
+
+int						get_rgba(int r, int g, int b, int a);
+int						reverse_bytes(int c);
+void					my_mlx_pixel_put(t_mlx *mlx, int x, int y, int color);
+float					nor_angle(float angle);
+int						unit_circle(float angle, char c);
+
+// render.c
+
+double					get_x_o(mlx_texture_t *texture, t_mlx *mlx);
+void					draw_floor_ceiling(t_mlx *mlx, int ray, int t_pix,
+							int b_pix);
+void					draw_wall(t_mlx *mlx, int t_pix, int b_pix,
+							double wall_h);
+void					render_wall(t_mlx *mlx, int ray);
 
 #endif

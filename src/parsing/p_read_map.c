@@ -71,7 +71,6 @@ int	read_map(char *av, t_data *map, int *count)
 		{
 			map->ture = ft_strjoin(map->ture, map->line);
 			(*count)++;
-			// printf("%s\n", map->ture); //test
 		}
 		ft_memfree(map->line);
 		map->line = get_next_line(map->fd);

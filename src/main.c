@@ -24,7 +24,6 @@ int	main(int ac, char **av)
 	dt.t = NULL;
 	if (!parsing(ac, av, &dt))
 		return (1);
-	imprimirMatriz(dt.sq_map, dt.h_map, dt.w_map);
-	// execution(&dt);
+	execution(&dt);
 	return (0);
 }

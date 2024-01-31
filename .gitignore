@@ -38,7 +38,7 @@ lib/libmlx/src/mlx_vert_shader.c
 *.i*86
 *.x86_64
 *.hex
-cub3d
+cub3D
 
 # Debug files
 *.dSYM/
@@ -58,5 +58,3 @@ dkms.conf
 # more ...
 .DS_Store
 .vscode
-test
-src/execution
