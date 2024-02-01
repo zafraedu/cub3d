@@ -5,6 +5,8 @@ void	get_rows_cols(t_data *m)
 	int	i;
 	int	j;
 
+	m->cols = 0;
+	m->rows = 0;
 	i = 0;
 	while (m->map2d[i])
 	{
@@ -64,16 +66,14 @@ int	parsing(int ac, char **av, t_data *data)
 	count = 0;
 	if (!read_map(av[1], data, &count))
 		return (0);
-	exit(1);
-	data = NULL;
-/* if (!valid_map(data))
+	if (!valid_map(data))
 		return (0);
 	data->t = NULL;
-	if (!lst_ture(data, &data->t))
+ 	if (!lst_ture(data, &data->t))
 		return (free_map(data), freelist(&data->t), 0);
 	if (!color_ture(data, data->t))
 		return (free_map(data), freelist(&data->t), 0);
 	get_x_y_player(data);
-	get_rows_cols(data); */
+	get_rows_cols(data);
 	return (1);
 }

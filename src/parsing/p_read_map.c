@@ -27,14 +27,19 @@ int	is_validmap(char *line, int *flag)
 
 char	*getmap(t_data *map)
 {
+	char	*temp;
+
 	map->map = ft_strdup("");
 	while (map->line)
 	{
 		if (map->line[0] == '\n')
 			return (ft_putstr_fd(ERR_MAP_EMPTY, 2), freetl(map->map, map->line,
 					-1), NULL);
-		map->map = ft_strjoin(map->map, map->line);
+		temp = ft_strjoin(map->map, map->line);
+		ft_memfree(map->map);
 		ft_memfree(map->line);
+		map->map = ft_strdup(temp);
+		ft_memfree(temp);
 		map->line = get_next_line(map->fd);
 	}
 	return (map->map);
@@ -56,17 +61,10 @@ int	read_map_(t_data *map, int count)
 	return (1);
 }
 
-int	read_map(char *av, t_data *map, int *count)
+void	process_map(t_data *map, int *count)
 {
 	char	*temp_ture;
 
-	map->fd = open(av, O_RDONLY);
-	if (map->fd == -1)
-		return (ft_putstr_fd(ERR_INV_FILE, 2), 0);
-	map->line = get_next_line(map->fd);
-	if (map->line == NULL)
-		return (ft_putstr_fd(ERR_EMPTY_FILE, 2), 0);
-	map->ture = ft_strdup("");
 	while (map->line && map->line[0] != '1' && map->line[0] != 32)
 	{
 		if (check_color_textures(map->line))
@@ -76,11 +74,22 @@ int	read_map(char *av, t_data *map, int *count)
 			map->ture = strdup(temp_ture);
 			ft_memfree(temp_ture);
 			(*count)++;
-			//printf("%s\n", map->ture); //test
 		}
 		ft_memfree(map->line);
 		map->line = get_next_line(map->fd);
 	}
+}
+
+int	read_map(char *av, t_data *map, int *count)
+{
+	map->fd = open(av, O_RDONLY);
+	if (map->fd == -1)
+		return (ft_putstr_fd(ERR_INV_FILE, 2), 0);
+	map->line = get_next_line(map->fd);
+	if (map->line == NULL)
+		return (ft_putstr_fd(ERR_EMPTY_FILE, 2), 0);
+	map->ture = ft_strdup("");
+	process_map(map, count);
 	if (!check_count_textures(map, *count))
 		return (freetl(map->ture, map->line, map->fd), 0);
 	map->ture2d = ft_split(map->ture, '\n');
