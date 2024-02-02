@@ -5,23 +5,24 @@ void	drow_map_pixel(void *mlxl)
 	t_mlx	*mlx;
 
 	mlx = mlxl;
-	mlx_delete_image(mlx->mlx_p, mlx->img);
-	mlx->img = mlx_new_image(mlx->mlx_p, S_W, S_H);
+	mlx_delete_image(mlx->mlx_ptr, mlx->img);
+	mlx->img = mlx_new_image(mlx->mlx_ptr, S_W, S_H);
 	cub_hook(mlx, 0, 0);
 	cast_rays(mlx);
-	mlx_image_to_window(mlx->mlx_p, mlx->img, 0, 0);
+	mlx_image_to_window(mlx->mlx_ptr, mlx->img, 0, 0);
 }
 
 int	checkload(t_turelist *list)
 {
-	t_turelist			*tmp;
+	t_turelist		*tmp;
 	mlx_texture_t	*texture;
 
 	tmp = list;
 	while (tmp)
 	{
 		if (!ft_strncmp(tmp->name, "NO", 2) || !ft_strncmp(tmp->name, "SO", 2)
-			|| !ft_strncmp(tmp->name, "WE", 2) || !ft_strncmp(tmp->name, "EA", 2))
+			|| !ft_strncmp(tmp->name, "WE", 2) || !ft_strncmp(tmp->name, "EA",
+				2))
 		{
 			texture = mlx_load_png(tmp->value);
 			if (texture == NULL)
@@ -83,15 +84,15 @@ int	execution(t_data *dt)
 	mlx.ray = (t_ray *)ft_calloc(sizeof(t_ray), 1);
 	mlx.tex = (t_tex *)ft_calloc(sizeof(t_tex), 1);
 	mlx.dt = dt;
-	mlx.mlx_p = mlx_init(S_W, S_H, "cub3D", false);
-	if (!mlx.mlx_p)
+	mlx.mlx_ptr = mlx_init(S_W, S_H, "cub3D", false);
+	if (!mlx.mlx_ptr)
 		return (ft_exit(&mlx), 0);
 	if (!load_texture(mlx.tex, dt->t))
 		return (ft_exit(&mlx), 0);
 	get_angle(&mlx);
-	mlx_key_hook(mlx.mlx_p, &key_press, &mlx);
-	mlx_loop_hook(mlx.mlx_p, &drow_map_pixel, &mlx);
-	mlx_loop(mlx.mlx_p);
+	mlx_key_hook(mlx.mlx_ptr, &key_press, &mlx);
+	mlx_loop_hook(mlx.mlx_ptr, &drow_map_pixel, &mlx);
+	mlx_loop(mlx.mlx_ptr);
 	ft_exit(&mlx);
 	return (0);
 }

@@ -25,10 +25,10 @@ SRCS = $(SRC_DIR)/main.c\
 	$(SRC_DIR)/parsing/p_frees.c\
 	$(SRC_DIR)/parsing/p_valid_map.c\
 	$(SRC_DIR)/parsing/p_lst_ture.c\
-	$(SRC_DIR)/execution/execfree.c\
+	$(SRC_DIR)/execution/e_frees.c\
 	$(SRC_DIR)/execution/execution.c\
-	$(SRC_DIR)/execution/mouvement.c\
-	$(SRC_DIR)/execution/raycasting.c\
+	$(SRC_DIR)/execution/e_mouvement.c\
+	$(SRC_DIR)/execution/e_raycasting.c\
 	$(SRC_DIR)/execution/render.c\
 	$(SRC_DIR)/execution/render2.c\
 

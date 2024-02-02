@@ -14,15 +14,15 @@ void	ft_delete_tex(t_tex *tex)
 
 void	ft_exit(t_mlx *mlx)
 {
-	mlx_delete_image(mlx->mlx_p, mlx->img);
-	mlx_close_window(mlx->mlx_p);
+	mlx_delete_image(mlx->mlx_ptr, mlx->img);
+	mlx_close_window(mlx->mlx_ptr);
 	freelist(&mlx->dt->t);
 	free_map(mlx->dt);
 	ft_delete_tex(mlx->tex);
-	free(mlx->tex);
-	free(mlx->ply);
-	free(mlx->ray);
-	mlx_terminate(mlx->mlx_p);
-	ft_putstr_fd("Game closed\n", 1);
+	ft_memfree(mlx->tex);
+	ft_memfree(mlx->ply);
+	ft_memfree(mlx->ray);
+	mlx_terminate(mlx->mlx_ptr);
+	ft_putstr_fd("END GAME\n", 1);
 	exit(0);
 }

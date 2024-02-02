@@ -37,7 +37,6 @@
 # define FOV 60                      // field of view
 # define ROTATION_SPEED 0.045        // rotation speed
 # define PLAYER_SPEED 4              // player speed
-# define M_PI 3.14159265358979323846 //? ns pq el de <math.h> no funciona
 
 // ERROR
 
@@ -92,16 +91,16 @@ typedef struct s_ray
 
 typedef struct s_data
 {
-	char **map2d; // the map
-	int p_x;      // player x position in the map
-	int p_y;      // player y position in the map
-	int w_map;    // map width
-	int h_map;    // map height
+	int p_x;   // player x position in the map
+	int p_y;   // player y position in the map
+	int w_map; // map width
+	int h_map; // map height
 	int					fd;
 	char				*line;
 	char				*ture;
 	char				**ture2d;
 	char				*map;
+	char				**map2d;
 	char				**sq_map;
 	char				**cc;
 	char				**ff;
@@ -111,7 +110,7 @@ typedef struct s_data
 typedef struct s_mlx
 {
 	mlx_image_t *img; // the image
-	mlx_t *mlx_p;     // the mlx pointer
+	mlx_t *mlx_ptr;   // the mlx pointer
 	t_ray *ray;       // the ray structure
 	t_data *dt;       // the data structure
 	t_player *ply;    // the player structure
