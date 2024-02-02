@@ -52,8 +52,7 @@ int	check_extension_map(char *file_name)
 {
 	char	*dot;
 
-	// Busca la última ocurrencia del carácter '.' en la cadena fname.
-	dot = ft_strrchr(file_name, '.');
+	dot = ft_strrchr(file_name, '.');// Busca la última ocurrencia del carácter '.' en la cadena fname.
 	return (dot && !ft_strcmp(dot, ".cub"));
 }
 

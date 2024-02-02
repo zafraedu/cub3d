@@ -1,9 +1,10 @@
 #include "cub3d.h"
 
-/* void	v(void)
-{
-	system("leaks -q cub3D");
-} */
+// void v(void)
+// {
+// 	system("leaks -q cub3D");
+// }
+// atexit(v);
 
 // void imprimirMatriz(char **matriz, int filas, int columnas) {
 //     for (int i = 0; i < filas; i++) {
@@ -18,8 +19,8 @@
 /*############################################################################*/
 int	main(int ac, char **av)
 {
-	//atexit(v);
 	t_data	dt;
+
 	dt.t = NULL;
 	if (!parsing(ac, av, &dt))
 		return (1);

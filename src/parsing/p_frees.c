@@ -7,7 +7,7 @@ void	freetl(char *ture, char *line, int fd)
 	if (line)
 		ft_memfree(line);
 	if (fd >= 0)
-		close (fd);
+		close(fd);
 }
 
 void	free_map(t_data *m)

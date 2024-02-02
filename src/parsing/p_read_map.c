@@ -19,7 +19,7 @@ int	is_validmap(char *line, int *flag)
 				|| line[i] == 'N' || line[i] == 'S'))
 			return (0);
 		else if (line[i] == 'W' || line[i] == 'E' || line[i] == 'N'
-				|| line[i] == 'S')
+			|| line[i] == 'S')
 			(*flag)++;
 	}
 	return (1);
