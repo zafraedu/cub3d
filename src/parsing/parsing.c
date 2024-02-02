@@ -1,25 +1,5 @@
 #include "cub3d.h"
 
-void	get_rows_cols(t_data *m)
-{
-	int	i;
-	int	j;
-
-	m->cols = 0;
-	m->rows = 0;
-	i = 0;
-	while (m->map2d[i])
-	{
-		j = 0;
-		while (m->map2d[i][j])
-			j++;
-		if (j > m->cols)
-			m->cols = j;
-		i++;
-	}
-	m->rows = i;
-}
-
 void	get_x_y_player(t_data *m)
 {
 	int	i;
@@ -73,6 +53,5 @@ int	parsing(int ac, char **av, t_data *data)
 	if (!color_ture(data, data->t))
 		return (free_map(data), freelist(&data->t), 0);
 	get_x_y_player(data);
-	get_rows_cols(data);
 	return (1);
 }
