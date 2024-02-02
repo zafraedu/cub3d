@@ -5,6 +5,8 @@ void	get_rows_cols(t_data *m)
 	int	i;
 	int	j;
 
+	m->cols = 0;
+	m->rows = 0;
 	i = 0;
 	while (m->map2d[i])
 	{
@@ -50,8 +52,7 @@ int	check_extension_map(char *file_name)
 {
 	char	*dot;
 
-	// Busca la última ocurrencia del carácter '.' en la cadena fname.
-	dot = ft_strrchr(file_name, '.');
+	dot = ft_strrchr(file_name, '.');// Busca la última ocurrencia del carácter '.' en la cadena fname.
 	return (dot && !ft_strcmp(dot, ".cub"));
 }
 
@@ -67,7 +68,7 @@ int	parsing(int ac, char **av, t_data *data)
 	if (!valid_map(data))
 		return (0);
 	data->t = NULL;
-	if (!lst_ture(data, &data->t))
+ 	if (!lst_ture(data, &data->t))
 		return (free_map(data), freelist(&data->t), 0);
 	if (!color_ture(data, data->t))
 		return (free_map(data), freelist(&data->t), 0);

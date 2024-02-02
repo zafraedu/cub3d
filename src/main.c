@@ -1,10 +1,10 @@
 #include "cub3d.h"
 
-// void	v(void)
+// void v(void)
 // {
-// 	system("leaks -q cub3d");
+// 	system("leaks -q cub3D");
 // }
-//	atexit(v);
+// atexit(v);
 
 // void imprimirMatriz(char **matriz, int filas, int columnas) {
 //     for (int i = 0; i < filas; i++) {
@@ -24,7 +24,8 @@ int	main(int ac, char **av)
 	dt.t = NULL;
 	if (!parsing(ac, av, &dt))
 		return (1);
-	imprimirMatriz(dt.sq_map, dt.h_map, dt.w_map);
 	// execution(&dt);
+	free_map(&dt);
+	freelist(&dt.t);
 	return (0);
 }
