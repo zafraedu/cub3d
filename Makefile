@@ -29,8 +29,8 @@ SRCS = $(SRC_DIR)/main.c\
 	$(SRC_DIR)/execution/execution.c\
 	$(SRC_DIR)/execution/e_mouvement.c\
 	$(SRC_DIR)/execution/e_raycasting.c\
-	$(SRC_DIR)/execution/render.c\
-	$(SRC_DIR)/execution/render2.c\
+	$(SRC_DIR)/execution/e_render.c\
+	$(SRC_DIR)/execution/e_render2.c\
 
 OBJS = $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 #########################  directorios(rutas)  #################################

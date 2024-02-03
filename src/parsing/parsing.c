@@ -47,11 +47,11 @@ int	parsing(int ac, char **av, t_data *data)
 		return (0);
 	if (!valid_map(data))
 		return (0);
-	data->t = NULL;
- 	if (!lst_ture(data, &data->t))
-		return (free_map(data), freelist(&data->t), 0);
-	if (!color_ture(data, data->t))
-		return (free_map(data), freelist(&data->t), 0);
+	data->t_list = NULL;
+ 	if (!lst_ture(data, &data->t_list))
+		return (free_map(data), freelist(&data->t_list), 0);
+	if (!color_ture(data, data->t_list))
+		return (free_map(data), freelist(&data->t_list), 0);
 	get_x_y_player(data);
 	return (1);
 }

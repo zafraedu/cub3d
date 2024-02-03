@@ -41,10 +41,10 @@ double	get_x_o(mlx_texture_t *texture, t_mlx *mlx)
 	double	x_o;
 
 	if (mlx->ray->flag == 1)
-		x_o = (int)fmodf((mlx->ray->horiz_x * (texture->width / TILE_SIZE)),
+		x_o = (int)fmodf((mlx->ray->horiz_x * (texture->width / WALL_SIZE)),
 				texture->width);
 	else
-		x_o = (int)fmodf((mlx->ray->vert_y * (texture->width / TILE_SIZE)),
+		x_o = (int)fmodf((mlx->ray->vert_y * (texture->width / WALL_SIZE)),
 				texture->width);
 	return (x_o);
 }
@@ -80,7 +80,7 @@ void	render_wall(t_mlx *mlx, int ray)
 	double	t_pix;
 
 	mlx->ray->distance *= cos(nor_angle(mlx->ray->ray_ngl - mlx->ply->angle));
-	wall_h = (TILE_SIZE / mlx->ray->distance) * ((S_W / 2)
+	wall_h = (WALL_SIZE / mlx->ray->distance) * ((S_W / 2)
 			/ tan(mlx->ply->fov_rd / 2));
 	b_pix = (S_H / 2) + (wall_h / 2);
 	t_pix = (S_H / 2) - (wall_h / 2);

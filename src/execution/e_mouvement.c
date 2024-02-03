@@ -25,12 +25,12 @@ void	move_player(t_mlx *mlx, double move_x, double move_y)
 
 	new_x = roundf(mlx->ply->plyr_x + move_x);
 	new_y = roundf(mlx->ply->plyr_y + move_y);
-	map_grid_x = (new_x / TILE_SIZE);
-	map_grid_y = (new_y / TILE_SIZE);
-	if (mlx->dt->map2d[map_grid_y][map_grid_x] != '1'
-		&& (mlx->dt->sq_map[map_grid_y][mlx->ply->plyr_x / TILE_SIZE] != '1'
+	map_grid_x = (new_x / WALL_SIZE);
+	map_grid_y = (new_y / WALL_SIZE);
+	if (mlx->dt->sq_map[map_grid_y][map_grid_x] != '1'
+		&& (mlx->dt->sq_map[map_grid_y][mlx->ply->plyr_x / WALL_SIZE] != '1'
 			&& mlx->dt->sq_map[mlx->ply->plyr_y
-			/ TILE_SIZE][map_grid_x] != '1'))
+			/ WALL_SIZE][map_grid_x] != '1'))
 	{
 		mlx->ply->plyr_x = new_x;
 		mlx->ply->plyr_y = new_y;
@@ -66,7 +66,7 @@ void	cub_hook(t_mlx *mlx, double move_x, double move_y)
 	move_player(mlx, move_x, move_y);
 }
 
-void	ft_reles(mlx_key_data_t keydata, t_mlx *mlx)
+void	ft_reset_move(mlx_key_data_t keydata, t_mlx *mlx)
 {
 	if (keydata.key == MLX_KEY_D && (keydata.action == MLX_RELEASE))
 		mlx->ply->l_r = 0;
@@ -104,5 +104,5 @@ void	key_press(mlx_key_data_t keydata, void *ml)
 		mlx->ply->rot = -1;
 	else if (keydata.key == MLX_KEY_RIGHT && keydata.action == MLX_PRESS)
 		mlx->ply->rot = 1;
-	ft_reles(keydata, mlx);
+	ft_reset_move(keydata, mlx);
 }

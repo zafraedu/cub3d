@@ -6,7 +6,7 @@ int	inter_check(float angle, float *inter, float *step, int is_horizon)
 	{
 		if (angle > 0 && angle < M_PI)
 		{
-			*inter += TILE_SIZE;
+			*inter += WALL_SIZE;
 			return (-1);
 		}
 		*step *= -1;
@@ -15,7 +15,7 @@ int	inter_check(float angle, float *inter, float *step, int is_horizon)
 	{
 		if (!(angle > M_PI / 2 && angle < 3 * M_PI / 2))
 		{
-			*inter += TILE_SIZE;
+			*inter += WALL_SIZE;
 			return (-1);
 		}
 		*step *= -1;
@@ -30,8 +30,8 @@ int	wall_hit(float x, float y, t_mlx *mlx)
 
 	if (x < 0 || y < 0)
 		return (0);
-	x_m = floor(x / TILE_SIZE);
-	y_m = floor(y / TILE_SIZE);
+	x_m = floor(x / WALL_SIZE);
+	y_m = floor(y / WALL_SIZE);
 	if ((y_m >= mlx->dt->h_map || x_m >= mlx->dt->w_map))
 		return (0);
 	if (mlx->dt->map2d[y_m] && x_m <= (int)ft_strlen(mlx->dt->map2d[y_m]))
@@ -48,9 +48,9 @@ float	get_h_inter(t_mlx *mlx, float angl)
 	float	y_step;
 	int		pixel;
 
-	y_step = TILE_SIZE;
-	x_step = TILE_SIZE / tan(angl);
-	h_y = floor(mlx->ply->plyr_y / TILE_SIZE) * TILE_SIZE;
+	y_step = WALL_SIZE;
+	x_step = WALL_SIZE / tan(angl);
+	h_y = floor(mlx->ply->plyr_y / WALL_SIZE) * WALL_SIZE;
 	pixel = inter_check(angl, &h_y, &y_step, 1);
 	h_x = mlx->ply->plyr_x + (h_y - mlx->ply->plyr_y) / tan(angl);
 	if ((unit_circle(angl, 'y') && x_step > 0) || (!unit_circle(angl, 'y')
@@ -75,9 +75,9 @@ float	get_v_inter(t_mlx *mlx, float angl)
 	float	y_step;
 	int		pixel;
 
-	x_step = TILE_SIZE;
-	y_step = TILE_SIZE * tan(angl);
-	v_x = floor(mlx->ply->plyr_x / TILE_SIZE) * TILE_SIZE;
+	x_step = WALL_SIZE;
+	y_step = WALL_SIZE * tan(angl);
+	v_x = floor(mlx->ply->plyr_x / WALL_SIZE) * WALL_SIZE;
 	pixel = inter_check(angl, &v_x, &x_step, 0);
 	v_y = mlx->ply->plyr_y + (v_x - mlx->ply->plyr_x) * tan(angl);
 	if ((unit_circle(angl, 'x') && y_step < 0) || (!unit_circle(angl, 'x')

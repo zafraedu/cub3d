@@ -1,31 +1,19 @@
 #include "cub3d.h"
 
-// void v(void)
+// void leaks(void)
 // {
 // 	system("leaks -q cub3D");
 // }
-// atexit(v);
+// atexit(leaks);
 
-// void imprimirMatriz(char **matriz, int filas, int columnas) {
-//     for (int i = 0; i < filas; i++) {
-//         for (int j = 0; j < columnas; j++) {
-//             printf("%c ", matriz[i][j]);
-//         }
-//         printf("\n");
-//     }
-// }
-// imprimirMatriz(dt.sq_map, dt.h_map, dt.w_map);
-
-/*############################################################################*/
 int	main(int ac, char **av)
 {
 	t_data	dt;
 
-	dt.t = NULL;
 	if (!parsing(ac, av, &dt))
 		return (1);
-	// execution(&dt);
+	execution(&dt);
 	free_map(&dt);
-	freelist(&dt.t);
+	freelist(&dt.t_list);
 	return (0);
 }

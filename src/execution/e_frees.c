@@ -16,7 +16,7 @@ void	ft_exit(t_mlx *mlx)
 {
 	mlx_delete_image(mlx->mlx_ptr, mlx->img);
 	mlx_close_window(mlx->mlx_ptr);
-	freelist(&mlx->dt->t);
+	freelist(&mlx->dt->t_list);
 	free_map(mlx->dt);
 	ft_delete_tex(mlx->tex);
 	ft_memfree(mlx->tex);
