@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   p_textures.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ezafra-r <ezafra-r@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/08 18:24:55 by ezafra-r          #+#    #+#             */
+/*   Updated: 2024/02/08 18:30:18 by ezafra-r         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 int	check_color_values(char **rgb)
@@ -53,6 +65,6 @@ int	check_count_textures(t_data *m, int count)
 {
 	(void)m;
 	if (count != 6)
-		return (ft_putstr_fd(ERR_MAP_INV, 2), 0); // cantidad de texturas
+		return (ft_putstr_fd(ERR_MAP_INV, 2), 0);
 	return (1);
 }
