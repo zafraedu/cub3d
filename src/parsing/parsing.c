@@ -56,10 +56,6 @@ void	get_x_y_player(t_data *m)
 	}
 }
 
-/**
- * @return (Retorna 1 si dot no es NULL y la extensión es ".cub");
- * de lo contrario, retorna 0.
-*/
 int	check_extension_map(char *file_name)
 {
 	char	*dot;
