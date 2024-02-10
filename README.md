@@ -21,12 +21,13 @@
 ## ABOUT
 
 Este proyecto está inspirado en el mundialmente famoso juego Wolfenstein 3D, que Fue el primer FPS de la historia. Le permitirá explorar la emisión de rayos. Tu objetivo será Crea una vista dinámica dentro de un laberinto, en el que tendrás que encontrar tu camino.
+>[Click aquí](./public/en.subject.pdf) para ver el `PDF` del proyecto.
+>
+>[Click aquí](https://harm-smits.github.io/42docs/projects/cub3d) para ver un documento guía del proyecto.
 
 <img  alt="" class="bg lo oq c" loading="lazy" role="presentation" src="https://miro.medium.com/v2/resize:fit:600/1*25dBmsNUQps5geRZZZy-uQ.gif">
 <img alt="" class="bg lo oq c" loading="lazy" role="presentation" src="https://miro.medium.com/v2/resize:fit:700/1*svkleB98HymepJjip4qTOA.png">
 
-[Click aquí](./public/en.subject.pdf) para ver el `PDF` del proyecto.
-[Click aquí](https://harm-smits.github.io/42docs/projects/cub3d) para ver un documento guía del proyecto.
 
 ## HOW TO USE
 
