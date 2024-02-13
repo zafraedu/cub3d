@@ -52,14 +52,14 @@
 
 // ERROR
 
-# define ERR_INV_COP "Error: invalid compilation\n"
+# define ERR_INV_COP "Error: invalid argument\n"
 # define ERR_INV_FILE "Error: invalid file\n"
 # define ERR_EMPTY_FILE "Error: empty file\n"
 
 # define ERR_MAP_INV "Error: invalid map element\n"
 # define ERR_MAP_EMPTY "Error: empty ligne in the map\n"
 # define ERR_MAP_DUP "Error: duplicate map element\n"
-# define ERR_MAP_RGB "Error: color map [RGB] invalid\n"
+# define ERR_MAP_RGB "Error: invalid color map [RGB]\n"
 
 /*══════════════════════════ [  STRUCTS  ] ═══════════════════════════════════*/
 
